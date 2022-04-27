@@ -1,0 +1,104 @@
+html {
+  font-family: "Merriweather", sans-serif;
+}
+
+body {
+  margin: 0px 0px;
+}
+
+footer {
+  background-color: black;
+  padding: 50px 300px;
+}
+
+.footer-link-item {
+  list-style: none;
+}
+
+footer a,
+footer p,
+footer h5 {
+  color: gray;
+  margin: 0;
+}
+
+.footer-link-item {
+  margin: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: left;
+  border: solid;
+  height: min-content;
+}
+
+.footer-container {
+  display: inline-block;
+  margin: 20px;
+}
+
+/* #region Navigation Bar */
+nav {
+  background-color: black;
+}
+
+#navbar-menu {
+  display: flex;
+  justify-content: center;
+  margin: 0 0;
+  padding: 0 0;
+}
+
+.navbar-menu-item {
+  display: inline-block;
+  font-weight: bold;
+  padding: 10px;
+  height: 100%;
+  text-align: center;
+}
+
+.navbar-menu-item a {
+  color: white;
+}
+
+.navbar-menu-item:hover {
+  background-color: #8a7968;
+}
+
+/* #endregion */
+
+.content-container {
+  background-color: white;
+  height: fit-content;
+}
+
+#main {
+  height: 700px;
+  display: flex;
+  flex-direction: row;
+  padding: 100px;
+}
+
+#header {
+  background-color: white;
+  display: block;
+  position: sticky;
+  top: 0px;
+}
+
+#header-photo {
+  width: 100%;
+  display: block;
+}
+
+#background-photo-container {
+  /* background-image: url('../resources/images/background.jpg'); */
+  background-color: beige;
+  background-attachment: fixed;
+  padding: 0px 300px;
+}
