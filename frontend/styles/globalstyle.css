@@ -31,6 +31,10 @@ footer h5 {
   margin: 0;
 }
 
+h5 {
+  font-size: 19px;
+}
+
 .footer-link-item {
   margin: 5px;
 }
@@ -84,10 +88,12 @@ nav {
 .content-container {
   background-color: white;
   height: fit-content;
+  min-width: fit-content;
 }
 
 #main {
   height: max-content;
+  min-width: fit-content;
   padding: 4vw;
 }
 

@@ -21,6 +21,8 @@
   background-size: cover;
   background-position: center;
   transition: all 0.5s;
+  min-width: fit-content;
+  min-height: fit-content;
 }
 
 .tile-big:hover {

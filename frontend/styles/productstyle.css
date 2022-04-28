@@ -14,7 +14,7 @@ textarea {
 }
 
 .product-photo {
-  width: 60%;
+  width: 70%;
 }
 
 .photo-container,
@@ -45,6 +45,9 @@ textarea {
   background-color: black;
   color: white;
   border-radius: 10px;
+  font-weight: 700;
+  width: 30%;
+  min-width: fit-content;
 }
 
 #buy-button:hover,
