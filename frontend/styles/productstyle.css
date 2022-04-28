@@ -39,6 +39,10 @@ textarea {
   width: 100%;
 }
 
+#quantity {
+  width: 40px;
+}
+
 #buy-button,
 #post-review-button {
   height: 40px;
