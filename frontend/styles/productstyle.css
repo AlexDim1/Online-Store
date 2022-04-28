@@ -1,0 +1,78 @@
+@import url(globalstyle.css);
+
+#main {
+  padding-top: 1vw;
+}
+
+textarea {
+  resize: none;
+}
+
+.photo-and-buy-form-container {
+  display: flex;
+  padding: 1vw;
+}
+
+.product-photo {
+  width: 60%;
+}
+
+.photo-container,
+.buy-form-container {
+  display: inline-block;
+  width: 50%;
+  margin: 15px;
+  padding: 10px;
+}
+
+.photo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.buy-form {
+  padding: 20px 20px 20px 0;
+}
+
+.buy-form *,
+.new-review-form * {
+  width: 100%;
+}
+
+#buy-button,
+#post-review-button {
+  height: 40px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
+#buy-button:hover,
+#post-review-button:hover {
+  cursor: pointer;
+  background-color: var(--hover-color);
+}
+
+#review-content {
+  columns: 50%;
+}
+
+.review-item {
+  margin: 20px;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+  padding: 10px;
+}
+
+#price {
+  font-size: x-large;
+  font-weight: 700;
+}
+
+.description-heading {
+    margin-bottom: 1px;
+}
+
+.product-info {
+    margin-top: 1px;
+}

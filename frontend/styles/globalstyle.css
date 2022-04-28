@@ -1,3 +1,7 @@
+:root {
+  --hover-color: #8a7968;
+}
+
 html {
   font-family: "Merriweather", sans-serif;
 }
@@ -8,11 +12,16 @@ body {
 
 footer {
   background-color: black;
-  padding: 50px 300px;
+  padding: 2vh 15vw;
+  height: 5%;
 }
 
 .footer-link-item {
   list-style: none;
+}
+
+.footer-links-list {
+  padding: 0 0;
 }
 
 footer a,
@@ -32,7 +41,6 @@ a {
 
 .footer-content {
   display: flex;
-  justify-content: left;
   border: solid;
   height: min-content;
 }
@@ -40,6 +48,7 @@ a {
 .footer-container {
   display: inline-block;
   margin: 20px;
+  width: 50%;
 }
 
 /* #region Navigation Bar */
@@ -67,7 +76,7 @@ nav {
 }
 
 .navbar-menu-item:hover {
-  background-color: #8a7968;
+  background-color: var(--hover-color);
 }
 
 /* #endregion */
@@ -78,10 +87,8 @@ nav {
 }
 
 #main {
-  height: 700px;
-  display: flex;
-  flex-direction: row;
-  padding: 100px;
+  height: max-content;
+  padding: 4vw;
 }
 
 #header {
@@ -91,14 +98,19 @@ nav {
   top: 0px;
 }
 
+.header-heading {
+  margin: 0 0;
+  padding: 15px 15px;
+}
+
 #header-photo {
   width: 100%;
   display: block;
 }
 
 #background-photo-container {
-  /* background-image: url('../resources/images/background.jpg'); */
+  background-image: url('../resources/images/background.jpg');
   background-color: beige;
   background-attachment: fixed;
-  padding: 0px 300px;
+  padding: 0px 15vw;
 }
