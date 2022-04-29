@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -29,7 +30,26 @@ public class StoreController {
     @GetMapping("/products")
     public ResponseEntity<?> getProducts() {
         List<Product> products = productRepo.findAll();
+        List<List<Product>> productRows = productRows(products, 3);
+        return ResponseEntity.ok(productRows);
+    }
 
-        return ResponseEntity.ok(products);
+    private List<List<Product>> productRows(List<Product> products, Integer perRow) {
+        List<List<Product>> productRows = new ArrayList<>();
+
+        Integer rowCount = products.size() / perRow + 1;
+
+        List<Product> row;
+        for (int i = 1; i <= rowCount; i++) {
+            int endIdx = i * 3;
+
+            if(endIdx > products.size() - 1)
+                endIdx = products.size();
+            row = products.subList((i - 1) * 3, endIdx);
+
+            productRows.add(row);
+        }
+
+        return productRows;
     }
 }
