@@ -1,57 +1,57 @@
 @import url(globalstyle.css);
 
 .store-item {
-    border: 1px solid;
-    width: 33%;
-    height: auto;
-    border-radius: 10px;
-    background-color: white;
-    transition: all 0.3s;
-    word-break: break-all;
+  border: 1px solid;
+  width: fit-content;
+  height: auto;
+  border-radius: 10px;
+  background-color: white;
+  transition: all 0.2s;
+  word-break: break-word;
 }
 
 .store-tile {
-    color: black;
+  color: black;
 }
 
 .product-container {
-    display: flex;
+  display: flex;
 }
 
 .product-container div {
-    display: inline;
-    padding: 15px;
+  display: inline;
+  padding: 15px;
 }
 
 .store-item:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .store-table {
-    table-layout: fixed;
-    width: 100%;
+  table-layout: fixed;
+  width: 100%;
 }
 
 .product-image-holder {
-    width: 35%;
+  width: 35%;
 }
 
 .product-info-holder {
-    width: 65%;
+  width: 65%;
 }
 
 .product-image {
-    width: 100%;
+  width: 100%;
 }
 
 .book-name {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .book-author {
-    font-style: italic;
+  font-style: italic;
 }
 
 .price-badge {
-    font-weight: 700;
+  font-weight: 700;
 }

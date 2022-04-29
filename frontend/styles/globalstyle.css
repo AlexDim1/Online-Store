@@ -29,6 +29,7 @@ footer p,
 footer h5 {
   color: gray;
   margin: 0;
+  word-break: break-word;
 }
 
 h5 {
@@ -115,7 +116,7 @@ nav {
 }
 
 #background-photo-container {
-  background-image: url('../resources/images/background.jpg');
+  background-image: url("../resources/images/background.jpg");
   background-color: beige;
   background-attachment: fixed;
   padding: 0px 15vw;
