@@ -1,20 +1,26 @@
 package bg.bookstore.bookstoreApplication.Payload.Response;
 
 import bg.bookstore.bookstoreApplication.Entities.Product;
+import bg.bookstore.bookstoreApplication.Entities.Review;
+import java.util.List;
 
-public class GetProductsResponse {
+public class ProductResponse {
     private Long id;
     private String name;
     private String author;
-    private String shortDescription;
+    private String description;
+    private Integer pageCount;
     private Double price;
+    private List<Review> reviews;
 
-    public GetProductsResponse(Product product) {
+    public ProductResponse(Product product) {
         this.id = product.getId();
         this.name = product.getName();
         this.author = product.getAuthor();
-        this.shortDescription = product.getShortDescription();
+        this.description = product.getDescription();
+        this.pageCount = product.getPageCount();
         this.price = product.getPrice();
+        this.reviews = product.getReviews();
     }
 
     public Long getId() {
@@ -41,12 +47,20 @@ public class GetProductsResponse {
         this.author = author;
     }
 
-    public String getShortDescription() {
-        return shortDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getPageCount() {
+        return pageCount;
+    }
+
+    public void setPageCount(Integer pageCount) {
+        this.pageCount = pageCount;
     }
 
     public Double getPrice() {
@@ -55,5 +69,13 @@ public class GetProductsResponse {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }
