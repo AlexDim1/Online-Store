@@ -1,6 +1,7 @@
 package bg.bookstore.bookstoreApplication.Controllers;
 
 import bg.bookstore.bookstoreApplication.Entities.Product;
+import bg.bookstore.bookstoreApplication.Payload.Response.GetProductsResponse;
 import bg.bookstore.bookstoreApplication.Repositories.OrderRepository;
 import bg.bookstore.bookstoreApplication.Repositories.ProductRepository;
 import bg.bookstore.bookstoreApplication.Repositories.ReviewRepository;
@@ -30,22 +31,28 @@ public class StoreController {
     @GetMapping("/products")
     public ResponseEntity<?> getProducts() {
         List<Product> products = productRepo.findAll();
-        List<List<Product>> productRows = productRows(products, 3);
+
+        List<GetProductsResponse> productsResponse = new ArrayList<>();
+
+        for (Product product : products)
+            productsResponse.add(new GetProductsResponse(product));
+
+        List<List<GetProductsResponse>> productRows = productRows(productsResponse, 2);
         return ResponseEntity.ok(productRows);
     }
 
-    private List<List<Product>> productRows(List<Product> products, Integer perRow) {
-        List<List<Product>> productRows = new ArrayList<>();
+    private List<List<GetProductsResponse>> productRows(List<GetProductsResponse> products, Integer perRow) {
+        List<List<GetProductsResponse>> productRows = new ArrayList<>();
 
         Integer rowCount = products.size() / perRow + 1;
 
-        List<Product> row;
+        List<GetProductsResponse> row;
         for (int i = 1; i <= rowCount; i++) {
-            int endIdx = i * 3;
+            int endIdx = i * perRow;
 
             if(endIdx > products.size() - 1)
                 endIdx = products.size();
-            row = products.subList((i - 1) * 3, endIdx);
+            row = products.subList((i - 1) * perRow, endIdx);
 
             productRows.add(row);
         }
