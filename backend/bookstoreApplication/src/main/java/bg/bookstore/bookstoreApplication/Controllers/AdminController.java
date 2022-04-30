@@ -33,6 +33,7 @@ public class AdminController {
         product = new Product(request.getName(),
                 request.getAuthor(),
                 request.getDescription(),
+                request.getShortDescription(),
                 request.getPageCount(),
                 request.getPrice());
 

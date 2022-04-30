@@ -3,6 +3,7 @@ package bg.bookstore.bookstoreApplication.Payload.Request;
 public class AddProductRequest {
     private String name;
     private String author;
+    private String shortDescription;
     private String description;
     private Integer pageCount;
     private Double price;
@@ -24,6 +25,14 @@ public class AddProductRequest {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
     }
 
     public String getDescription() {

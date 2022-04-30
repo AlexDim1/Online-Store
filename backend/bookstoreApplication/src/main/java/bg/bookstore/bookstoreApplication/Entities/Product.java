@@ -23,20 +23,11 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String author, String description, String shortDescription, Integer pageCount, Double price, Integer timesBought) {
+    public Product(String name, String author, String description, String shortDescription, Integer pageCount, Double price) {
         this.name = name;
         this.author = author;
         this.description = description;
         this.shortDescription = shortDescription;
-        this.pageCount = pageCount;
-        this.price = price;
-        this.timesBought = timesBought;
-    }
-
-    public Product(String name, String author, String description, Integer pageCount, Double price) {
-        this.name = name;
-        this.author = author;
-        this.description = description;
         this.pageCount = pageCount;
         this.price = price;
         this.timesBought = 0;
