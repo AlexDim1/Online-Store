@@ -1,11 +1,14 @@
 package bg.bookstore.bookstoreApplication.Controllers;
 
+import bg.bookstore.bookstoreApplication.Entities.Order;
 import bg.bookstore.bookstoreApplication.Entities.Product;
+import bg.bookstore.bookstoreApplication.Payload.Request.PlaceOrderRequest;
 import bg.bookstore.bookstoreApplication.Payload.Response.ProductResponse;
 import bg.bookstore.bookstoreApplication.Payload.Response.StoreResponse;
 import bg.bookstore.bookstoreApplication.Repositories.OrderRepository;
 import bg.bookstore.bookstoreApplication.Repositories.ProductRepository;
 import bg.bookstore.bookstoreApplication.Repositories.ReviewRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +27,25 @@ public class StoreController {
         this.productRepo = productRepo;
         this.reviewRepo = reviewRepo;
         this.orderRepo = orderRepo;
+    }
+
+    @PostMapping("/products/{id}/buy")
+    public ResponseEntity<?> buyProduct(@PathVariable Long id, @RequestBody PlaceOrderRequest request) {
+        Product product = productRepo.findProductById(id);
+
+        Order newOrder = new Order(product,
+                request.getBuyAmount(),
+                request.getBuyerName(),
+                request.getBuyerAddress());
+
+        try {
+            orderRepo.save(newOrder);
+        }
+        catch (Exception e) {
+            return new ResponseEntity<>("Поръчката беше неуспешна.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return ResponseEntity.ok("Успешно поръчахте " + newOrder.getBuyAmount() + "бр. " + product.getName() + "!");
     }
 
     @GetMapping("/products/{id}")

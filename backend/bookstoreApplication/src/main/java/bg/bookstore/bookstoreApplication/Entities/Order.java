@@ -20,13 +20,13 @@ public class Order {
     public Order() {
     }
 
-    public Order(Date date, Product product, Integer buyAmount, String buyerName, String buyerAddress, Double totalPrice) {
-        this.date = date;
+    public Order(Product product, Integer buyAmount, String buyerName, String buyerAddress) {
+        this.date = new Date();
         this.product = product;
         this.buyAmount = buyAmount;
         this.buyerName = buyerName;
         this.buyerAddress = buyerAddress;
-        this.totalPrice = totalPrice;
+        this.totalPrice = buyAmount * product.getPrice();
     }
 
     public Long getId() {
