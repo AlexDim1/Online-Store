@@ -13,7 +13,7 @@ async function populateStore() {
                 const row = data[rowIdx];
                 tablerow = document.createElement('tr');
                 tablerow.className = 'store-row';
-                tablerow.setAttribute('id', 'row'+rowIdx);
+                tablerow.setAttribute('id', 'row'+ (rowIdx+1));
                 storeBody.appendChild(tablerow);
 
                 for (let item = 0; item < row.length; item++) {
@@ -22,7 +22,7 @@ async function populateStore() {
                     let td = document.createElement('td');
                     td.setAttribute('id', element.id);
                     td.className = 'store-item';
-                    storeBody.appendChild(td);
+                    tablerow.appendChild(td);
                     
                     let a = document.createElement('a');
                     a.className = 'store-tile';
@@ -44,6 +44,7 @@ async function populateStore() {
                     let productImage = document.createElement('img');
                     productImage.className = 'product-image';
                     productImage.setAttribute('src', '../resources/images/products/'+element.id+'.jpg');
+                    productImage.setAttribute('alt', element.name);
                     productImageHolder.appendChild(productImage);
 
                     let bookName = document.createElement('h4');
@@ -56,10 +57,10 @@ async function populateStore() {
                     bookAuthor.innerHTML = element.author;
                     productInfoHolder.appendChild(bookAuthor);
 
-                    // let description = document.createElement('p');
-                    // description.className = 'description';
-                    // description.innerHTML = element.description;
-                    // productInfoHolder.appendChild(description);
+                    let description = document.createElement('p');
+                    description.className = 'short-description';
+                    description.innerHTML = element.shortDescription;
+                    productInfoHolder.appendChild(description);
 
                     let priceBadge = document.createElement('p');
                     priceBadge.className = 'price-badge';

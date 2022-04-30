@@ -1,8 +1,8 @@
 @import url(globalstyle.css);
 
 .store-item {
-  border: 1px solid;
-  width: fit-content;
+  border: 2px solid;
+  min-width: fit-content;
   height: auto;
   border-radius: 10px;
   background-color: white;
@@ -16,6 +16,7 @@
 
 .product-container {
   display: flex;
+  min-width: fit-content;
 }
 
 .product-container div {
@@ -24,12 +25,12 @@
 }
 
 .store-item:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .store-table {
-  table-layout: fixed;
   width: 100%;
+  border-spacing: 10px;
 }
 
 .product-image-holder {
