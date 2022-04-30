@@ -8,6 +8,7 @@ import bg.bookstore.bookstoreApplication.Payload.Response.StoreResponse;
 import bg.bookstore.bookstoreApplication.Repositories.OrderRepository;
 import bg.bookstore.bookstoreApplication.Repositories.ProductRepository;
 import bg.bookstore.bookstoreApplication.Repositories.ReviewRepository;
+import bg.bookstore.bookstoreApplication.Utilities.Validation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,9 @@ public class StoreController {
 
     @PostMapping("/products/{id}/buy")
     public ResponseEntity<?> buyProduct(@PathVariable Long id, @RequestBody PlaceOrderRequest request) {
+        if(!Validation.validateBuyerInfo(request))
+            return new ResponseEntity<>("Невалидни данни.", HttpStatus.BAD_REQUEST);
+
         Product product = productRepo.findProductById(id);
 
         Order newOrder = new Order(product,
