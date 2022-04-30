@@ -60,7 +60,7 @@ textarea {
   background-color: var(--hover-color);
 }
 
-#review-content {
+#new-review-content {
   columns: 50%;
 }
 
@@ -69,6 +69,19 @@ textarea {
   border-bottom: 1px solid;
   border-top: 1px solid;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-content {
+  margin: 0;
+}
+
+.review-date {
+  float: right;
+  margin-bottom: 0;
+  margin-left: auto;
+  color: grey;
 }
 
 #price {
