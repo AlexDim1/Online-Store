@@ -12,6 +12,7 @@ public class Product {
     private String author;
     @Column(columnDefinition = "TEXT")
     private String description;
+    private String shortDescription;
     private Integer pageCount;
     private Double price;
     private Integer timesBought;
@@ -20,6 +21,16 @@ public class Product {
     private List<Review> reviews;
 
     public Product() {
+    }
+
+    public Product(String name, String author, String description, String shortDescription, Integer pageCount, Double price, Integer timesBought) {
+        this.name = name;
+        this.author = author;
+        this.description = description;
+        this.shortDescription = shortDescription;
+        this.pageCount = pageCount;
+        this.price = price;
+        this.timesBought = timesBought;
     }
 
     public Product(String name, String author, String description, Integer pageCount, Double price) {
@@ -57,6 +68,14 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
     }
 
     public Integer getPageCount() {
