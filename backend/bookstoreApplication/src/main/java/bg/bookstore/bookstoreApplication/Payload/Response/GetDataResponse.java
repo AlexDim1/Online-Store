@@ -2,11 +2,11 @@ package bg.bookstore.bookstoreApplication.Payload.Response;
 
 import java.util.List;
 
-public class ProductsAndOrdersResponse {
+public class GetDataResponse {
     private List<AdminProductResponse> products;
     private List<AdminOrderResponse> orders;
 
-    public ProductsAndOrdersResponse(List<AdminProductResponse> products, List<AdminOrderResponse> orders) {
+    public GetDataResponse(List<AdminProductResponse> products, List<AdminOrderResponse> orders) {
         this.products = products;
         this.orders = orders;
     }

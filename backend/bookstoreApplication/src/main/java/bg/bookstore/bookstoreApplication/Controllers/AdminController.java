@@ -5,10 +5,9 @@ import bg.bookstore.bookstoreApplication.Entities.Product;
 import bg.bookstore.bookstoreApplication.Payload.Request.AddProductRequest;
 import bg.bookstore.bookstoreApplication.Payload.Response.AdminOrderResponse;
 import bg.bookstore.bookstoreApplication.Payload.Response.AdminProductResponse;
-import bg.bookstore.bookstoreApplication.Payload.Response.ProductsAndOrdersResponse;
+import bg.bookstore.bookstoreApplication.Payload.Response.GetDataResponse;
 import bg.bookstore.bookstoreApplication.Repositories.OrderRepository;
 import bg.bookstore.bookstoreApplication.Repositories.ProductRepository;
-import bg.bookstore.bookstoreApplication.Repositories.ReviewRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,17 +20,15 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
     private final ProductRepository productRepo;
-    private final ReviewRepository reviewRepo;
     private final OrderRepository orderRepo;
 
-    public AdminController(ProductRepository productRepo, ReviewRepository reviewRepo, OrderRepository orderRepo) {
+    public AdminController(ProductRepository productRepo, OrderRepository orderRepo) {
         this.productRepo = productRepo;
-        this.reviewRepo = reviewRepo;
         this.orderRepo = orderRepo;
     }
 
     @GetMapping("/data")
-    public ProductsAndOrdersResponse getData() {
+    public GetDataResponse getData() {
         List<Product> products = productRepo.findAll();
         List<AdminProductResponse> productsResponse = new ArrayList<>();
         for (Product product: products)
@@ -42,7 +39,12 @@ public class AdminController {
         for (Order order: orders)
             ordersResponse.add(new AdminOrderResponse(order));
 
-        return new ProductsAndOrdersResponse(productsResponse, ordersResponse);
+        return new GetDataResponse(productsResponse, ordersResponse);
+    }
+
+    @GetMapping("/{id}")
+    public AdminProductResponse getProduct(@PathVariable Long id) {
+        return new AdminProductResponse(productRepo.findProductById(id));
     }
 
     @PostMapping("/products/add")
