@@ -70,6 +70,7 @@ function postReview() {
             'Content-type': 'application/json'
         }
     }).then(response => {
+        // TODO: fix reload
         location.reload(true);
         return response.json();
     });

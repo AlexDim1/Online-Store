@@ -13,7 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Dongle&family=Merriweather:ital,wght@0,400;1,400;1,900&display=swap"
       rel="stylesheet"
     />
-    <title>Store</title>
+    <title>Admin</title>
   </head>
   <body>
     <div id="background-photo-container">
@@ -35,12 +35,67 @@
           </nav>
         </div>
         <div id="main">
-          <h2 class="page-heading">Книги</h2>
-          <table class="store-table">
-            <tbody class="store-body">
-              
-            </tbody>
-          </table>
+            <div class="tab">
+                <button class="tab-link" onclick="showTab(event, 'products')">Продукти</button>
+                <button class="tab-link" onclick="showTab(event, 'orders')">Поръчки</button>
+            </div>
+            <div class="tab-content" id="products">
+                <table id="products-table">
+                    <thead>
+                        <tr>
+                            <th class="table-heading">Id</th>
+                            <th class="table-heading">Име</th>
+                            <th class="table-heading">Автор</th>
+                            <th class="table-heading">Цена</th>
+                            <th class="table-heading">Бр. продажби</th>
+                            <th class="product-button"></th>
+                            <th class="product-button"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="products-body">
+                        <!-- <tr class="product-row">
+                            <td class="table-info"></td>
+                            <td class="table-info"></td>
+                            <td class="table-info"></td>
+                            <td class="table-info" id="price"></td>
+                            <td class="table-info"></td>
+                            <td class="product-button">
+                                <button class="table-button" onclick="editProduct()">Редактирай</button>
+                            </td>
+                            <td class="product-button">
+                                <button class="table-button" onclick="removeProduct()">Изтрий</button>
+                            </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+                <!-- TODO: add form -->
+            </div>
+            <div class="tab-content" id="orders">
+                <table id="orders-table">
+                    <thead>
+                        <tr>
+                            <th class="table-heading">Id</th>
+                            <th class="table-heading">Продукт</th>
+                            <th class="table-heading">Име</th>
+                            <th class="table-heading">Адрес</th>
+                            <th class="table-heading">Дата</th>
+                            <th class="table-heading">Брой</th>
+                            <th class="table-heading">Обща цена</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orders-body">
+                        <!-- <tr class="order-row">
+                            <td class="table-info"></td>
+                            <td class="table-info"></td>
+                            <td class="table-info"></td>
+                            <td class="table-info"></td>
+                            <td class="table-info" id="date"></td>
+                            <td class="table-info"></td>
+                            <td class="table-info" id="price"></td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
         </div>
       </div>
     </div>
