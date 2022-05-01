@@ -41,6 +41,7 @@ textarea {
 .buy-form *,
 .new-review-form * {
   width: 100%;
+  box-sizing: border-box;
 }
 
 #quantity {
@@ -62,10 +63,6 @@ textarea {
 #post-review-button:hover {
   cursor: pointer;
   background-color: var(--hover-color);
-}
-
-#new-review-content {
-  columns: 50%;
 }
 
 .review-item {
