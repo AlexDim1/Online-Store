@@ -1,8 +1,11 @@
 package bg.bookstore.bookstoreApplication.Controllers;
 
+import bg.bookstore.bookstoreApplication.Entities.Order;
 import bg.bookstore.bookstoreApplication.Entities.Product;
 import bg.bookstore.bookstoreApplication.Payload.Request.AddProductRequest;
+import bg.bookstore.bookstoreApplication.Payload.Response.AdminOrderResponse;
 import bg.bookstore.bookstoreApplication.Payload.Response.AdminProductResponse;
+import bg.bookstore.bookstoreApplication.Payload.Response.ProductsAndOrdersResponse;
 import bg.bookstore.bookstoreApplication.Repositories.OrderRepository;
 import bg.bookstore.bookstoreApplication.Repositories.ProductRepository;
 import bg.bookstore.bookstoreApplication.Repositories.ReviewRepository;
@@ -27,15 +30,19 @@ public class AdminController {
         this.orderRepo = orderRepo;
     }
 
-    @GetMapping("/products")
-    public List<AdminProductResponse> getProducts() {
+    @GetMapping("/data")
+    public ProductsAndOrdersResponse getData() {
         List<Product> products = productRepo.findAll();
-
-        List<AdminProductResponse> response = new ArrayList<>();
+        List<AdminProductResponse> productsResponse = new ArrayList<>();
         for (Product product: products)
-            response.add(new AdminProductResponse(product));
+            productsResponse.add(new AdminProductResponse(product));
 
-        return response;
+        List<Order> orders = orderRepo.findAll();
+        List<AdminOrderResponse> ordersResponse = new ArrayList<>();
+        for (Order order: orders)
+            ordersResponse.add(new AdminOrderResponse(order));
+
+        return new ProductsAndOrdersResponse(productsResponse, ordersResponse);
     }
 
     @PostMapping("/products/add")
