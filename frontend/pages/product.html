@@ -58,16 +58,16 @@
                 </p>
                 <p>
                   <label for="name-input">Име:</label><br />
-                  <input type="text" id="name-input" name="user_name" />
+                  <input type="text" id="name-input" name="user_name" placeholder="Вашето име"/>
                 </p>
                 <p>
                   <label for="address-input">Адрес:</label><br />
-                  <textarea
+                  <input
                     name="user_address"
                     id="address-input"
-                    cols="30"
-                    rows="5"
-                  ></textarea>
+                    type="text"
+                    placeholder="Вашият адрес"
+                  ></input>
                 </p>
                 <p align="right">
                   <button type="button" id="buy-button" onclick="buyProduct()">Поръчай</button>
@@ -89,10 +89,7 @@
           <div class="reviews">
             <div class="reviews-container">
               <h4 id="reviews-heading" class="description-heading">Потребителски ревюта</h4>
-              <div class="review-item">
-                <p class="review-content">Невероятен роман! ❤</p>
-                <p class="review-date">21.03.2022</p>
-              </div>
+              
             </div>
             <div class="new-review-container">
               <form action="" class="new-review-form">
@@ -102,6 +99,7 @@
                   id="new-review-content"
                   cols="30"
                   rows="10"
+                  placeholder="Коментар"
                 ></textarea
                 ><br />
                 <p align="right">

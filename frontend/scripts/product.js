@@ -18,8 +18,6 @@ function populatePage() {
             document.querySelector('#description').innerHTML = data.description;
             document.querySelector('#page-count').innerHTML = data.pageCount;
 
-            let reviewsContainer = document.querySelector('.reviews-container');
-            let dateFormatter = new Intl.DateTimeFormat('bg-BG');
             data.reviews.forEach(element => {
                 reviewItem = document.createElement('div');
                 reviewItem.className = 'review-item';
@@ -29,9 +27,10 @@ function populatePage() {
                 reviewContent.innerHTML = element.content;
                 reviewItem.appendChild(reviewContent);
 
+                date = new Date(element.date);
                 reviewDate = document.createElement('p');
                 reviewDate.className = 'review-date';
-                reviewDate.innerHTML = dateFormatter.format(new Date(element.date));
+                reviewDate.innerHTML = date.toLocaleString();
                 reviewItem.appendChild(reviewDate);
 
                 document.querySelector('#reviews-heading').after(reviewItem);

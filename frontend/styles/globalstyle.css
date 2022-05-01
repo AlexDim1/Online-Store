@@ -121,3 +121,16 @@ nav {
   background-attachment: fixed;
   padding: 0px 15vw;
 }
+
+input, textarea {
+  outline: none;
+}
+
+input[type="text"], textarea {
+  padding: 7px;
+}
+
+input[type="text"], input[type="number"] {
+  border: none;
+  border-bottom: 2px solid black;
+}
