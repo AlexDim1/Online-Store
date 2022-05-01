@@ -6,6 +6,7 @@ import bg.bookstore.bookstoreApplication.Payload.Request.AddProductRequest;
 import bg.bookstore.bookstoreApplication.Payload.Response.AdminOrderResponse;
 import bg.bookstore.bookstoreApplication.Payload.Response.AdminProductResponse;
 import bg.bookstore.bookstoreApplication.Payload.Response.GetDataResponse;
+import bg.bookstore.bookstoreApplication.Payload.Response.ProductTableResponse;
 import bg.bookstore.bookstoreApplication.Repositories.OrderRepository;
 import bg.bookstore.bookstoreApplication.Repositories.ProductRepository;
 import org.springframework.http.HttpStatus;
@@ -30,9 +31,9 @@ public class AdminController {
     @GetMapping("/data")
     public GetDataResponse getData() {
         List<Product> products = productRepo.findAll();
-        List<AdminProductResponse> productsResponse = new ArrayList<>();
+        List<ProductTableResponse> productsResponse = new ArrayList<>();
         for (Product product: products)
-            productsResponse.add(new AdminProductResponse(product));
+            productsResponse.add(new ProductTableResponse(product));
 
         List<Order> orders = orderRepo.findAll();
         List<AdminOrderResponse> ordersResponse = new ArrayList<>();
@@ -63,5 +64,14 @@ public class AdminController {
 
         productRepo.save(product);
         return ResponseEntity.ok("Продуктът " + product.getName() + " с id: " + product.getId() + " e добавен успешно.");
+    }
+
+    // Todo: add updateProduct endpoint
+
+    @DeleteMapping("{id}/delete")
+    public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
+        productRepo.deleteById(id);
+
+        return ResponseEntity.ok("Продуктът беше изтрит успешно.");
     }
 }
