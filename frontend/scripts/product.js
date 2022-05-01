@@ -34,7 +34,7 @@ function populatePage() {
                 reviewDate.innerHTML = dateFormatter.format(new Date(element.date));
                 reviewItem.appendChild(reviewDate);
 
-                reviewsContainer.appendChild(reviewItem);
+                document.querySelector('#reviews-heading').after(reviewItem);
             });
         })
 }
@@ -71,8 +71,9 @@ function postReview() {
             'Content-type': 'application/json'
         }
     }).then(response => {
+        location.reload(true);
         return response.json();
-    })
+    });
 }
 
 function createBuyMessage(response) {
