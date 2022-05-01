@@ -59,6 +59,9 @@ public class StoreController {
 
     @PostMapping("/products/{id}/reviews/add")
     public ResponseEntity<?> addReview(@PathVariable Long id, @RequestBody AddReviewRequest request) {
+        if (!Validation.validateReview(request))
+            return new ResponseEntity<>("Моля, въведете текст.", HttpStatus.BAD_REQUEST);
+
         Product product = productRepo.findProductById(id);
 
         reviewRepo.save(new Review(request.getContent(), product));
