@@ -1,9 +1,11 @@
+id = 4;
+
 document.addEventListener('DOMContentLoaded', function() {
     populatePage();
 }, false)
 
-async function populatePage() {
-    const request = new Request('http://localhost:8080/store/products/' + 2);
+function populatePage() {
+    const request = new Request('http://localhost:8080/store/products/' + id);
 
     fetch(request)
         .then(response => response.json())
@@ -17,6 +19,7 @@ async function populatePage() {
             document.querySelector('#page-count').innerHTML = data.pageCount;
 
             let reviewsContainer = document.querySelector('.reviews-container');
+            let dateFormatter = new Intl.DateTimeFormat('bg-BG');
             data.reviews.forEach(element => {
                 reviewItem = document.createElement('div');
                 reviewItem.className = 'review-item';
@@ -28,10 +31,65 @@ async function populatePage() {
 
                 reviewDate = document.createElement('p');
                 reviewDate.className = 'review-date';
-                reviewDate.innerHTML = element.date;
+                reviewDate.innerHTML = dateFormatter.format(new Date(element.date));
                 reviewItem.appendChild(reviewDate);
 
                 reviewsContainer.appendChild(reviewItem);
             });
         })
+}
+
+function buyProduct() {
+    requestBody = {
+        buyAmount:document.querySelector('#quantity').value,
+        buyerName:document.querySelector('#name-input').value,
+        buyerAddress:document.querySelector('#address-input').value
+    };
+
+    fetch('http://localhost:8080/store/products/' + id + '/buy', {
+        method: 'POST',
+        body: JSON.stringify(requestBody),
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }).then(response => {
+        return response.json();
+    }).then(data => {
+        createBuyMessage(data);
+    })
+}
+
+function postReview() {
+    requestBody = {
+        content: document.querySelector('#new-review-content').value
+    };
+
+    fetch('http://localhost:8080/store/products/' + id + '/reviews/add', {
+        method: 'POST',
+        body: JSON.stringify(requestBody),
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }).then(response => {
+        return response.json();
+    })
+}
+
+function createBuyMessage(response) {
+    container = document.querySelector('.photo-and-buy-form-container');
+
+    if(document.querySelector('.buy-message-container') !== null) {
+        document.querySelector('.buy-message').innerHTML = response;
+        return;
+    }
+        
+    buyMessageContainer = document.createElement('div');
+    buyMessageContainer.className = 'buy-message-container';
+
+    buyMessage = document.createElement('p');
+    buyMessage.className = 'buy-message';
+    buyMessage.innerHTML = response;
+    buyMessageContainer.appendChild(buyMessage);
+
+    container.after(buyMessageContainer);
 }

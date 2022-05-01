@@ -45,7 +45,7 @@
             </div>
             <div class="buy-form-container">
               <p id="price"></p>
-              <form action="" class="buy-form">
+              <form action="" class="buy-form" name="buy-form">
                 <p>
                   <label for="quantity">Брой</label><br />
                   <input
@@ -70,7 +70,7 @@
                   ></textarea>
                 </p>
                 <p align="right">
-                  <input type="button" value="Купи" id="buy-button" />
+                  <button type="button" id="buy-button" onclick="buyProduct()">Поръчай</button>
                 </p>
               </form>
             </div>
@@ -106,9 +106,10 @@
                 ><br />
                 <p align="right">
                   <input
-                    type="button"
+                    type="submit"
                     value="Изпращане"
                     id="post-review-button"
+                    onclick="postReview()"
                   />
                 </p>
               </form>
