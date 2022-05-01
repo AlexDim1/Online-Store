@@ -17,8 +17,8 @@ public class Review {
     public Review() {
     }
 
-    public Review(Date date, String content, Product product) {
-        this.date = date;
+    public Review(String content, Product product) {
+        this.date = new Date();
         this.content = content;
         this.product = product;
     }

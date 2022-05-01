@@ -2,6 +2,8 @@ package bg.bookstore.bookstoreApplication.Controllers;
 
 import bg.bookstore.bookstoreApplication.Entities.Order;
 import bg.bookstore.bookstoreApplication.Entities.Product;
+import bg.bookstore.bookstoreApplication.Entities.Review;
+import bg.bookstore.bookstoreApplication.Payload.Request.AddReviewRequest;
 import bg.bookstore.bookstoreApplication.Payload.Request.PlaceOrderRequest;
 import bg.bookstore.bookstoreApplication.Payload.Response.ProductResponse;
 import bg.bookstore.bookstoreApplication.Payload.Response.StoreResponse;
@@ -42,6 +44,9 @@ public class StoreController {
                 request.getBuyerName(),
                 request.getBuyerAddress());
 
+        product.setTimesBought(product.getTimesBought() + request.getBuyAmount());
+        productRepo.save(product);
+
         try {
             orderRepo.save(newOrder);
         }
@@ -50,6 +55,14 @@ public class StoreController {
         }
 
         return ResponseEntity.ok("Успешно поръчахте " + newOrder.getBuyAmount() + "бр. " + product.getName() + "!");
+    }
+
+    @PostMapping("/products/{id}/reviews/add")
+    public ResponseEntity<?> addReview(@PathVariable Long id, @RequestBody AddReviewRequest request) {
+        Product product = productRepo.findProductById(id);
+
+        reviewRepo.save(new Review(request.getContent(), product));
+        return ResponseEntity.ok("Успешно добавено ревю.");
     }
 
     @GetMapping("/products/{id}")
