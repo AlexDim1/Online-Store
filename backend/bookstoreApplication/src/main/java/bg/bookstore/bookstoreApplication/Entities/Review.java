@@ -1,5 +1,8 @@
 package bg.bookstore.bookstoreApplication.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -11,6 +14,7 @@ public class Review {
     private Date date;
     private String content;
 
+    @JsonBackReference
     @ManyToOne
     private Product product;
 

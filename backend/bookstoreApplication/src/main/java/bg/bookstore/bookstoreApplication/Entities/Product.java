@@ -1,5 +1,7 @@
 package bg.bookstore.bookstoreApplication.Entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,6 +19,7 @@ public class Product {
     private Double price;
     private Integer timesBought;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "product")
     private List<Review> reviews;
 
