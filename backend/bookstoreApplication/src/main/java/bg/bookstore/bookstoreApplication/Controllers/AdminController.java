@@ -50,7 +50,7 @@ public class AdminController {
         Product product = productRepo.findProductByName(request.getName());
 
         if (product != null)
-            return new ResponseEntity<>(new MessageResponse("Продуктът вече е добавен."), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new MessageResponse("Продуктът вече е добавен.", "error"), HttpStatus.BAD_REQUEST);
 
         product = new Product(request.getName(),
                 request.getAuthor(),

@@ -49,10 +49,11 @@ function buyProduct() {
         headers: {
             'Content-type': 'application/json'
         }
-    }).then((response) => {
-        return JSON.stringify(response);
+    }).then(response => {
+        return response.json();
     }).then(data => {
-        console.log(data)
+        createBuyMessage(data.message, data.type);
+        console.log(data.message, data.type);
     })
 }
 
@@ -77,11 +78,20 @@ function postReview() {
     })
 }
 
-function createBuyMessage(response) {
+function createBuyMessage(message, type) {
     container = document.querySelector('.photo-and-buy-form-container');
 
     if(document.querySelector('.buy-message-container') !== null) {
-        document.querySelector('.buy-message').innerHTML = response;
+        if(type === 'error') {
+            p = document.querySelector('.buy-message-success');
+            p.className = '.buy-message-error';
+            p.innerHTML = message;
+            return;
+        }
+
+        p = document.querySelector('.buy-message-error');
+        p.className = '.buy-message-success';
+        p.innerHTML = message;
         return;
     }
         
@@ -89,8 +99,8 @@ function createBuyMessage(response) {
     buyMessageContainer.className = 'buy-message-container';
 
     buyMessage = document.createElement('p');
-    buyMessage.className = 'buy-message';
-    buyMessage.innerHTML = response;
+    buyMessage.className = 'buy-message-' + type;
+    buyMessage.innerHTML = message;
     buyMessageContainer.appendChild(buyMessage);
 
     container.after(buyMessageContainer);

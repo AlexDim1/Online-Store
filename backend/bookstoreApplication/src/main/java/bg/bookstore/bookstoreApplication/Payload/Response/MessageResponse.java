@@ -2,9 +2,11 @@ package bg.bookstore.bookstoreApplication.Payload.Response;
 
 public class MessageResponse {
     private String message;
+    private String type;
 
-    public MessageResponse(String message) {
+    public MessageResponse(String message, String type) {
         this.message = message;
+        this.type = type;
     }
 
     public String getMessage() {
@@ -13,5 +15,13 @@ public class MessageResponse {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
