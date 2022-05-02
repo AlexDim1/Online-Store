@@ -1,13 +1,16 @@
-:root {
-  --hover-color: #8a7968;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap');
 
 html {
-  font-family: "Merriweather", sans-serif;
+  font-family: "Roboto", sans-serif;
+  --hover-color: #8a7968;
 }
 
 body {
   margin: 0px 0px;
+}
+
+.menu-link {
+  font-size: 20px;
 }
 
 footer {
@@ -74,6 +77,7 @@ nav {
   padding: 10px;
   height: 100%;
   text-align: center;
+  transition: all 0.2s;
 }
 
 .navbar-menu-item a {

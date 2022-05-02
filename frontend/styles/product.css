@@ -1,4 +1,5 @@
 @import url(global.css);
+@import url('https://fonts.googleapis.com/css2?family=Dongle&family=Roboto:wght@700;800&family=Merriweather:ital,wght@0,400;1,400;1,900&display=swap');
 
 #main {
   padding-top: 1vw;
@@ -44,25 +45,52 @@ textarea {
   box-sizing: border-box;
 }
 
+.product-name {
+  font-size: 1.6em;
+  font-weight: 700;
+}
+
+.description-heading {
+  font-size: 1em;
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+
+.product-info {
+  margin-top: 1px;
+  font-style: italic;
+}
+
 #quantity {
   width: 40px;
 }
 
 #buy-button,
 #post-review-button {
-  height: 40px;
-  background-color: black;
-  color: white;
-  border-radius: 10px;
-  font-weight: 700;
-  width: 30%;
+  font-family: 'Roboto', sans-serif;
+  height: 45px;
+  padding: 7px 15px;
+  background-color: inherit;
+  color: black;
+  border-radius: 0.1em;
+  border-color: black;
+  font-weight: 500;
+  font-size: 20px;
+  width: fit-content;
   min-width: fit-content;
+  transition: all 0.2s;
 }
 
 #buy-button:hover,
 #post-review-button:hover {
   cursor: pointer;
   background-color: var(--hover-color);
+  color: white;
+}
+
+.reviews-heading {
+  font-size: 1.15em;
+  margin-bottom: 10px;
 }
 
 .review-item {
@@ -87,14 +115,6 @@ textarea {
 }
 
 #price {
-  font-size: x-large;
-  font-weight: 700;
-}
-
-.description-heading {
-  margin-bottom: 1px;
-}
-
-.product-info {
-  margin-top: 1px;
+  font-size: 40px;
+  font-weight: 800;
 }

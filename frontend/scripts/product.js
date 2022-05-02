@@ -16,6 +16,10 @@ function populatePage() {
             document.querySelector('#description').innerHTML = data.description;
             document.querySelector('#page-count').innerHTML = data.pageCount;
 
+            if(data.reviews.length > 0) {
+                document.querySelector('.reviews-container').removeChild(document.querySelector('#reviews-message'));
+            }
+
             data.reviews.forEach(element => {
                 reviewItem = document.createElement('div');
                 reviewItem.className = 'review-item';

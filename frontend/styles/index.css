@@ -31,6 +31,7 @@
 
 .tile-heading {
   font-weight: bold;
+  font-size: 30px;
   margin: 20px;
   color: white;
 }
@@ -39,7 +40,7 @@
   background-image: url(../resources/images/tile-admin.png);
   background-size: contain;
   background-repeat: no-repeat;
-  border: black solid;
+  border: black solid 1.5px;
   background-color: white;
 }
 
