@@ -1,3 +1,5 @@
+var id;
+
 document.addEventListener('DOMContentLoaded', populatePage, false);
 
 function populatePage() {
@@ -10,6 +12,7 @@ function populatePage() {
             });
             populateTableProducts(data.products);
             populateTableOrders(data.orders);
+            document.querySelector('#products-button').click();
         })
 }
 
@@ -45,8 +48,9 @@ function populateTableProducts(products) {
                 case 6:
                     button = document.createElement('button');
                     button.className = 'table-button';
-                    button.addEventListener('click', () => {
-                        editProduct(product.id)
+                    button.addEventListener('click', (event) => {
+                        id = event.currentTarget.parentElement.parentElement.getAttribute('id');
+                        editProduct();
                     }, false);
                     button.innerHTML = 'Редактирай';
                     td.appendChild(button);
@@ -54,7 +58,10 @@ function populateTableProducts(products) {
                 case 7:
                     button = document.createElement('button');
                     button.className = 'table-button';
-                    button.addEventListener('click', removeProduct, false);
+                    button.addEventListener('click', (event) => {
+                        id = event.currentTarget.parentElement.parentElement.getAttribute('id');
+                        removeProduct();
+                    }, false);
                     button.innerHTML = 'Изтрий';
                     td.appendChild(button);
                     break;
@@ -126,15 +133,70 @@ function showTab(event, tab) {
     event.currentTarget.className += ' active';
 }
 
-function editProduct(id) {
+function editProduct() {
     fetch('http://localhost:8080/admin/' + id)
         .then(response => {
             return response.json();
-        }).then(product => {
-            // TODO: fill form with info
+        }).then(data => {
+            populateProductInfoForm(data);
         })
 }
 
+function addProduct() {
+    requestBody = {
+        name: document.querySelector('#name-input').value,
+        author: document.querySelector('#author-input').value,
+        shortDescription: document.querySelector('#short-description-input').value,
+        description: document.querySelector('#description-input').value,
+        pageCount: document.querySelector('#pageCount-input').value,
+        price: document.querySelector('#price-input').value
+    }
+
+    fetch('http://localhost:8080/admin/products/add', {
+        method: 'POST',
+        body: JSON.stringify(requestBody),
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }).then(() => {
+        location.reload(true);
+    })
+}
+
+function saveChanges() {
+    requestBody = {
+        name: document.querySelector('#name-input').value,
+        author: document.querySelector('#author-input').value,
+        shortDescription: document.querySelector('#short-description-input').value,
+        description: document.querySelector('#description-input').value,
+        pageCount: document.querySelector('#pageCount-input').value,
+        price: document.querySelector('#price-input').value
+    }
+
+    fetch('http://localhost:8080/admin/' + id + '/update', {
+        method: 'PUT',
+        body: JSON.stringify(requestBody),
+        headers: {
+            'Content-type': 'application/json'
+        }
+    }).then(() => {
+        location.reload(true);
+    })
+}
+
+function populateProductInfoForm(product) {
+    document.querySelector('#name-input').value = product.name;
+    document.querySelector('#author-input').value = product.author;
+    document.querySelector('#price-input').value = product.price;
+    document.querySelector('#pageCount-input').value = product.pageCount;
+    document.querySelector('#short-description-input').value = product.shortDescription;
+    document.querySelector('#description-input').value = product.description;
+}
+
 function removeProduct() {
-    
+    fetch('http://localhost:8080/admin/' + id + '/delete', {
+        method: 'DELETE'
+    }).then(() => {
+        location.reload(true);
+    })
 }

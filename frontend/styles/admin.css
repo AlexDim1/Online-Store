@@ -5,15 +5,14 @@ th, td {
 }
 
 #main {
-    height: 1000px;
+    height: fit-content;
+    min-height: 700px;
 }
 
 .tab {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
-    position: sticky;
-    top: 0px;
 }
 
 .tab-content {
@@ -43,7 +42,6 @@ th, td {
 
 .tab button {
   background-color: gray;
-  float: left;
   border: none;
   outline: none;
   cursor: pointer;
@@ -57,4 +55,26 @@ th, td {
 
 .tab button:hover {
     background-color: rgb(168, 168, 168);
+}
+
+.product-info-form {
+    padding-top: 30px;
+}
+
+.product-info-form * {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#save-button, #new-product-button {
+    width: fit-content;
+}
+
+input[type=text] {
+    margin-bottom: 10px;
+    border: 1px solid;
+}
+
+input[type=button] {
+    display: inline;
 }

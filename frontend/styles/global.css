@@ -124,6 +124,7 @@ nav {
 
 input, textarea {
   outline: none;
+  resize: none;
 }
 
 input[type="text"], textarea {
