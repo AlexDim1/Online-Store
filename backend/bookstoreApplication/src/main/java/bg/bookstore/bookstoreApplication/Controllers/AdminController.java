@@ -3,10 +3,7 @@ package bg.bookstore.bookstoreApplication.Controllers;
 import bg.bookstore.bookstoreApplication.Entities.Order;
 import bg.bookstore.bookstoreApplication.Entities.Product;
 import bg.bookstore.bookstoreApplication.Payload.Request.AddProductRequest;
-import bg.bookstore.bookstoreApplication.Payload.Response.AdminOrderResponse;
-import bg.bookstore.bookstoreApplication.Payload.Response.AdminProductResponse;
-import bg.bookstore.bookstoreApplication.Payload.Response.GetDataResponse;
-import bg.bookstore.bookstoreApplication.Payload.Response.ProductTableResponse;
+import bg.bookstore.bookstoreApplication.Payload.Response.*;
 import bg.bookstore.bookstoreApplication.Repositories.OrderRepository;
 import bg.bookstore.bookstoreApplication.Repositories.ProductRepository;
 import org.springframework.http.HttpStatus;
@@ -53,7 +50,7 @@ public class AdminController {
         Product product = productRepo.findProductByName(request.getName());
 
         if (product != null)
-            return new ResponseEntity<>("Продуктът вече е добавен.", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new MessageResponse("Продуктът вече е добавен."), HttpStatus.BAD_REQUEST);
 
         product = new Product(request.getName(),
                 request.getAuthor(),
@@ -66,7 +63,7 @@ public class AdminController {
         return ResponseEntity.ok("Продуктът " + product.getName() + " с id: " + product.getId() + " e добавен успешно.");
     }
 
-    @PutMapping("/{id}/update")
+    @PostMapping("/{id}/update")
     public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody AddProductRequest request) {
         Product product = productRepo.findProductById(id);
 

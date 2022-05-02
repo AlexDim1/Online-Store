@@ -13,7 +13,7 @@ public class Product {
     private Long id;
     private String name;
     private String author;
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "TEXT", length = 1000)
     private String description;
     private String shortDescription;
     private Integer pageCount;

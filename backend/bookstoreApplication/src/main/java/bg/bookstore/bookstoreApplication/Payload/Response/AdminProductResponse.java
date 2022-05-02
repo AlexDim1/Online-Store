@@ -17,7 +17,7 @@ public class AdminProductResponse {
         this.name = product.getName();
         this.author = product.getAuthor();
         this.description = product.getDescription();
-        this.shortDescription = product.getDescription();
+        this.shortDescription = product.getShortDescription();
         this.pageCount = product.getPageCount();
         this.price = product.getPrice();
         this.timesBought = product.getTimesBought();

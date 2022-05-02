@@ -5,6 +5,7 @@ import bg.bookstore.bookstoreApplication.Entities.Product;
 import bg.bookstore.bookstoreApplication.Entities.Review;
 import bg.bookstore.bookstoreApplication.Payload.Request.AddReviewRequest;
 import bg.bookstore.bookstoreApplication.Payload.Request.PlaceOrderRequest;
+import bg.bookstore.bookstoreApplication.Payload.Response.MessageResponse;
 import bg.bookstore.bookstoreApplication.Payload.Response.ProductResponse;
 import bg.bookstore.bookstoreApplication.Payload.Response.StoreResponse;
 import bg.bookstore.bookstoreApplication.Repositories.OrderRepository;
@@ -35,7 +36,7 @@ public class StoreController {
     @PostMapping("/products/{id}/buy")
     public ResponseEntity<?> buyProduct(@PathVariable Long id, @RequestBody PlaceOrderRequest request) {
         if(!Validation.validateBuyerInfo(request))
-            return new ResponseEntity<>("Невалидни данни.", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new MessageResponse("Невалидни данни."), HttpStatus.BAD_REQUEST);
 
         Product product = productRepo.findProductById(id);
 
@@ -51,10 +52,10 @@ public class StoreController {
             orderRepo.save(newOrder);
         }
         catch (Exception e) {
-            return new ResponseEntity<>("Поръчката беше неуспешна.", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(new MessageResponse("Поръчката беше неуспешна."), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        return ResponseEntity.ok("Успешно поръчахте " + newOrder.getBuyAmount() + "бр. " + product.getName() + "!");
+        return ResponseEntity.ok(new MessageResponse("Успешно поръчахте " + newOrder.getBuyAmount() + "бр. " + product.getName() + "!"));
     }
 
     @PostMapping("/products/{id}/reviews/add")
