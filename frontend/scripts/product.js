@@ -43,7 +43,7 @@ function buyProduct() {
         buyerAddress:document.querySelector('#address-input').value
     };
 
-    fetch('http://localhost:8080/store/products/' + id + '/buy', {
+    fetch('http://localhost:8080/store/products/' + sessionStorage.getItem('Id') + '/buy', {
         method: 'POST',
         body: JSON.stringify(requestBody),
         headers: {
@@ -61,7 +61,7 @@ function postReview() {
         content: document.querySelector('#new-review-content').value
     };
 
-    fetch('http://localhost:8080/store/products/' + id + '/reviews/add', {
+    fetch('http://localhost:8080/store/products/' + sessionStorage.getItem('Id') + '/reviews/add', {
         method: 'POST',
         body: JSON.stringify(requestBody),
         headers: {
