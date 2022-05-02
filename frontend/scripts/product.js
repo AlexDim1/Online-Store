@@ -53,7 +53,7 @@ function buyProduct() {
         return response.json();
     }).then(data => {
         createBuyMessage(data.message, data.type);
-        console.log(data.message, data.type);
+        document.querySelector('.buy-form').reset();
     })
 }
 
@@ -81,16 +81,14 @@ function postReview() {
 function createBuyMessage(message, type) {
     container = document.querySelector('.photo-and-buy-form-container');
 
-    if(document.querySelector('.buy-message-container') !== null) {
-        if(type === 'error') {
-            p = document.querySelector('.buy-message-success');
-            p.className = '.buy-message-error';
-            p.innerHTML = message;
-            return;
-        }
-
-        p = document.querySelector('.buy-message-error');
-        p.className = '.buy-message-success';
+    if(document.querySelector('p[class*="-error"]') !== null) {
+        p = document.querySelector('p[class*="-error"]');
+        p.className = '.buy-message-' + type;
+        p.innerHTML = message;
+        return;
+    } else if (document.querySelector('p[class*="-success"]') !== null) {
+        p = document.querySelector('p[class*="-success"]');
+        p.className = '.buy-message-' + type;
         p.innerHTML = message;
         return;
     }
