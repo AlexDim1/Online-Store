@@ -66,7 +66,21 @@ public class AdminController {
         return ResponseEntity.ok("Продуктът " + product.getName() + " с id: " + product.getId() + " e добавен успешно.");
     }
 
-    // Todo: add updateProduct endpoint
+    @PutMapping("/{id}/update")
+    public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody AddProductRequest request) {
+        Product product = productRepo.findProductById(id);
+
+        product.setName(request.getName());
+        product.setAuthor(request.getAuthor());
+        product.setShortDescription(request.getShortDescription());
+        product.setDescription(request.getDescription());
+        product.setPageCount(request.getPageCount());
+        product.setPrice(request.getPrice());
+
+        productRepo.save(product);
+
+        return ResponseEntity.ok("Запазено.");
+    }
 
     @DeleteMapping("{id}/delete")
     public ResponseEntity<?> deleteProduct(@PathVariable Long id) {
