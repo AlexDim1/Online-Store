@@ -1,5 +1,3 @@
-var id;
-
 document.addEventListener('DOMContentLoaded', populatePage, false);
 
 function populatePage() {
@@ -46,24 +44,30 @@ function populateTableProducts(products) {
                     td.innerHTML = product.timesBought;
                     break;
                 case 6:
+                    div = document.createElement('div');
+                    div.className = 'table-button-holder';
                     button = document.createElement('button');
                     button.className = 'table-button';
                     button.addEventListener('click', (event) => {
-                        id = event.currentTarget.parentElement.parentElement.getAttribute('id');
-                        editProduct();
+                        id = event.currentTarget.parentElement.parentElement.parentElement.getAttribute('id');
+                        editProduct(id);
                     }, false);
                     button.innerHTML = 'Редактирай';
-                    td.appendChild(button);
+                    div.appendChild(button);
+                    td.appendChild(div);
                     break;
                 case 7:
+                    div = document.createElement('div');
+                    div.className = 'table-button-holder';
                     button = document.createElement('button');
                     button.className = 'table-button';
                     button.addEventListener('click', (event) => {
-                        id = event.currentTarget.parentElement.parentElement.getAttribute('id');
-                        removeProduct();
+                        id = event.currentTarget.parentElement.parentElement.parentElement.getAttribute('id');
+                        removeProduct(id);
                     }, false);
                     button.innerHTML = 'Изтрий';
-                    td.appendChild(button);
+                    div.appendChild(button);
+                    td.appendChild(div);
                     break;
             }
 
@@ -133,7 +137,7 @@ function showTab(event, tab) {
     event.currentTarget.className += ' active';
 }
 
-function editProduct() {
+function editProduct(id) {
     fetch('http://localhost:8080/admin/' + id)
         .then(response => {
             return response.json();
@@ -193,7 +197,7 @@ function populateProductInfoForm(product) {
     document.querySelector('#description-input').value = product.description;
 }
 
-function removeProduct() {
+function removeProduct(id) {
     fetch('http://localhost:8080/admin/' + id + '/delete', {
         method: 'DELETE'
     }).then(() => {
