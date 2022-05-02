@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     populateStore();
 }, false)
 
-window.clickedId = 4;
-
 function populateStore() {
     const request = new Request('http://localhost:8080/store/products');
     const storeBody = document.querySelector('.store-body');

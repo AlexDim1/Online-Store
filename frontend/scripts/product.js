@@ -38,9 +38,9 @@ function populatePage() {
 
 function buyProduct() {
     requestBody = {
-        buyAmount:document.querySelector('#quantity').value,
-        buyerName:document.querySelector('#name-input').value,
-        buyerAddress:document.querySelector('#address-input').value
+        buyAmount: document.querySelector('#quantity').value,
+        buyerName: document.querySelector('#name-input').value,
+        buyerAddress: document.querySelector('#address-input').value
     };
 
     fetch('http://localhost:8080/store/products/' + sessionStorage.getItem('Id') + '/buy', {
@@ -68,10 +68,13 @@ function postReview() {
             'Content-type': 'application/json'
         }
     }).then(response => {
-        // TODO: fix reload
+        if (!response.ok)
+            return response.json();
+
         location.reload(true);
-        return response.json();
-    });
+    }).then(data => {
+        alert(data.message);
+    })
 }
 
 function createBuyMessage(response) {
