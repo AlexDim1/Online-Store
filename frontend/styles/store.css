@@ -13,6 +13,7 @@
 
 .store-tile {
   color: black;
+  cursor: pointer;
 }
 
 .product-container {

@@ -1,11 +1,9 @@
-id = 4;
-
 document.addEventListener('DOMContentLoaded', function() {
     populatePage();
 }, false)
 
 function populatePage() {
-    const request = new Request('http://localhost:8080/store/products/' + id);
+    const request = new Request('http://localhost:8080/store/products/' + sessionStorage.getItem('Id'));
 
     fetch(request)
         .then(response => response.json())
@@ -51,10 +49,10 @@ function buyProduct() {
         headers: {
             'Content-type': 'application/json'
         }
-    }).then(response => {
-        return response.json();
+    }).then((response) => {
+        return JSON.stringify(response);
     }).then(data => {
-        createBuyMessage(data);
+        console.log(data)
     })
 }
 

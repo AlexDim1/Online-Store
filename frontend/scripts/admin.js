@@ -174,7 +174,7 @@ function saveChanges() {
     }
 
     fetch('http://localhost:8080/admin/' + id + '/update', {
-        method: 'PUT',
+        method: 'POST',
         body: JSON.stringify(requestBody),
         headers: {
             'Content-type': 'application/json'

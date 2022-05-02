@@ -2,7 +2,9 @@ document.addEventListener('DOMContentLoaded', function() {
     populateStore();
 }, false)
 
-async function populateStore() {
+window.clickedId = 4;
+
+function populateStore() {
     const request = new Request('http://localhost:8080/store/products');
     const storeBody = document.querySelector('.store-body');
 
@@ -20,13 +22,16 @@ async function populateStore() {
                     const element = row[item];
                     
                     let td = document.createElement('td');
-                    td.setAttribute('id', element.id);
                     td.className = 'store-item';
                     tablerow.appendChild(td);
                     
                     let a = document.createElement('a');
                     a.className = 'store-tile';
                     a.setAttribute('href', 'product.html');
+                    a.setAttribute('id', element.id);
+                    a.addEventListener('click', event => {
+                        setClickedId(event);
+                    }, false);
                     td.appendChild(a);
                     
                     let productContainer = document.createElement('div');
@@ -69,4 +74,8 @@ async function populateStore() {
                 }
             }
         })
+}
+
+function setClickedId(event) {
+    sessionStorage.setItem('Id', event.currentTarget.getAttribute('id'));
 }
