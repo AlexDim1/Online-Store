@@ -47,7 +47,7 @@ function populateTableProducts(products) {
                     div = document.createElement('div');
                     div.className = 'table-button-holder';
                     button = document.createElement('button');
-                    button.className = 'table-button';
+                    button.className = 'edit-button';
                     button.addEventListener('click', (event) => {
                         id = event.currentTarget.parentElement.parentElement.parentElement.getAttribute('id');
                         editProduct(id);
@@ -60,7 +60,7 @@ function populateTableProducts(products) {
                     div = document.createElement('div');
                     div.className = 'table-button-holder';
                     button = document.createElement('button');
-                    button.className = 'table-button';
+                    button.className = 'delete-button';
                     button.addEventListener('click', (event) => {
                         id = event.currentTarget.parentElement.parentElement.parentElement.getAttribute('id');
                         removeProduct(id);
@@ -178,7 +178,7 @@ function saveChanges() {
     }
 
     fetch('http://localhost:8080/admin/' + id + '/update', {
-        method: 'POST',
+        method: 'PUT',
         body: JSON.stringify(requestBody),
         headers: {
             'Content-type': 'application/json'

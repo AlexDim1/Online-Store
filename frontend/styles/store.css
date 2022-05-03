@@ -1,10 +1,16 @@
 @import url(global.css);
 
+.page-heading {
+  font-size: 40px;
+  margin-left: 10px;
+  margin-top: 15px;
+}
+
 .store-item {
-  border: 2px solid;
+  border: 1px solid;
   min-width: fit-content;
   height: auto;
-  border-radius: 10px;
+  border-radius: 0.1em;
   background-color: white;
   transition: all 0.2s;
   word-break: break-word;
@@ -49,6 +55,8 @@
 
 .book-name {
   margin-top: 0;
+  font-size: 20px;
+  font-weight: 900;
 }
 
 .book-author {

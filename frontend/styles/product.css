@@ -1,5 +1,5 @@
 @import url(global.css);
-@import url('https://fonts.googleapis.com/css2?family=Dongle&family=Roboto:wght@700;800&family=Merriweather:ital,wght@0,400;1,400;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Dongle&family=Roboto:wght@700;800&family=Merriweather:ital,wght@0,400;1,400;1,900&display=swap");
 
 #main {
   padding-top: 1vw;
@@ -18,7 +18,7 @@ textarea {
 .product-photo {
   width: 75%;
   height: auto;
-  min-width: 300px
+  min-width: 300px;
 }
 
 .photo-container,
@@ -67,7 +67,7 @@ textarea {
 
 #buy-button,
 #post-review-button {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   height: 45px;
   padding: 7px 15px;
   background-color: inherit;
@@ -112,9 +112,22 @@ textarea {
   margin-left: auto;
   color: grey;
   font-style: italic;
+  font-size: 15px;
 }
 
 #price {
   font-size: 40px;
   font-weight: 800;
+}
+
+.buy-message-error {
+  padding: 20px;
+  background-color: rgba(255, 0, 0, 0.644);
+  font-size: 18px;
+}
+
+.buy-message-success {
+  padding: 20px;
+  background-color: rgba(24, 203, 24, 0.644);
+  font-size: 18px;
 }

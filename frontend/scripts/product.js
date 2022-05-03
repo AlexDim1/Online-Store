@@ -87,12 +87,12 @@ function createBuyMessage(message, type) {
 
     if(document.querySelector('p[class*="-error"]') !== null) {
         p = document.querySelector('p[class*="-error"]');
-        p.className = '.buy-message-' + type;
+        p.className = 'buy-message-' + type;
         p.innerHTML = message;
         return;
     } else if (document.querySelector('p[class*="-success"]') !== null) {
         p = document.querySelector('p[class*="-success"]');
-        p.className = '.buy-message-' + type;
+        p.className = 'buy-message-' + type;
         p.innerHTML = message;
         return;
     }

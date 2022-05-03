@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap");
 
 html {
   font-family: "Roboto", sans-serif;
@@ -57,6 +57,10 @@ a {
   display: inline-block;
   margin: 20px;
   width: 50%;
+}
+
+.footer-link {
+  font-weight: 600;
 }
 
 /* #region Navigation Bar */
@@ -126,16 +130,25 @@ nav {
   padding: 0px 15vw;
 }
 
-input, textarea {
+input,
+textarea {
   outline: none;
   resize: none;
+  font-family: 'Roboto', sans-serif;
 }
 
-input[type="text"], textarea {
+input[type="text"],
+textarea {
   padding: 7px;
+  font-size: 15px;
 }
 
-input[type="text"], input[type="number"] {
+input[type="text"],
+input[type="number"] {
   border: none;
   border-bottom: 2px solid black;
+}
+
+textarea {
+  border-color: black;
 }

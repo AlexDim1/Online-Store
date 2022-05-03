@@ -16,7 +16,7 @@
 
 .tile-big {
   grid-row: 1 / 1;
-  border-radius: 25px;
+  border-radius: 0.1em;
   overflow: hidden;
   background-size: cover;
   background-position: center;
@@ -26,7 +26,7 @@
 }
 
 .tile-big:hover {
-  transform: scale(1.1);
+  transform: scale(1.07);
 }
 
 .tile-heading {
