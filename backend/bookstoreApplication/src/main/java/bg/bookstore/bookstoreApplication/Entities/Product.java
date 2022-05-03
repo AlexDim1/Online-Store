@@ -21,8 +21,11 @@ public class Product {
     private Integer timesBought;
 
     @JsonManagedReference
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", orphanRemoval = true)
     private List<Review> reviews;
+
+    @OneToMany(mappedBy = "product", orphanRemoval = true)
+    private List<Order> orders;
 
     public Product() {
     }
@@ -103,5 +106,13 @@ public class Product {
 
     public void setReviews(List<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

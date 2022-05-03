@@ -63,7 +63,7 @@ public class AdminController {
         return ResponseEntity.ok("Продуктът " + product.getName() + " с id: " + product.getId() + " e добавен успешно.");
     }
 
-    @PostMapping("/{id}/update")
+    @PutMapping("/{id}/update")
     public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody AddProductRequest request) {
         Product product = productRepo.findProductById(id);
 

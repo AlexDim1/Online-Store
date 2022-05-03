@@ -55,7 +55,7 @@ public class StoreController {
             return new ResponseEntity<>(new MessageResponse("Поръчката беше неуспешна.", "error"), HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        return ResponseEntity.ok(new MessageResponse("Успешно поръчахте " + newOrder.getBuyAmount() + "бр. " + product.getName() + "!", "success"));
+        return ResponseEntity.ok(new MessageResponse("Успешно поръчахте " + newOrder.getBuyAmount() + "бр. " + product.getName() + "! Поръчката ще бъде при вас в срок до 3 работни дни.", "success"));
     }
 
     @PostMapping("/products/{id}/reviews/add")
